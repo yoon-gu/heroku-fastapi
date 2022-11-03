@@ -1,6 +1,4 @@
 [core]
-    remote = storage
-['remote "localremote"']
-    url = ../../local_remote
-['remote "storage"']
-    url = s3://yoon-gu/dvc_mlops
+    remote = datastore
+['remote "datastore"']
+    url = s3://my-first-dvc
