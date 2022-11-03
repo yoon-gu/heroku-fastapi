@@ -7,7 +7,7 @@ from ml import model
 from ml.data import process_data
 from ml.model import train_model, compute_model_metrics, inference
 import pandas as pd
-
+import joblib
 
 # Add code to load in the data.
 data = pd.read_csv('../data/census.csv')
@@ -37,6 +37,10 @@ X_test, y_test, _, _ = process_data(
 
 # Train and save a model.
 model = train_model(X_train, y_train)
+
+joblib.dump(model, '../model/rf.joblib')
+joblib.dump(model, '../model/encoder.joblib')
+joblib.dump(model, '../model/lb.joblib')
 
 preds = inference(model, X_test)
 precision, recall, fbeta = compute_model_metrics(y_test, preds)
