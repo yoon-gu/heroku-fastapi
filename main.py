@@ -1,24 +1,26 @@
 from fastapi import FastAPI, Request
+from fastapi.encoders import jsonable_encoder
 import joblib
 from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional, List
+import pandas as pd
 
 class Census(BaseModel):
-    age: int
-    workclass: str
-    fnlgt: str
-    education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
+    age: int = 39
+    workclass: str = "State-gov"
+    fnlgt: str = "77516"
+    education: str = "Bachelors"
+    education_num: int = 13
+    marital_status: str = "Never-married"
+    occupation: str = "Adm-clerical"
+    relationship: str = "Not-in-family"
+    race: str = "White"
+    sex: str = "Male"
+    capital_gain: int = 2174
+    capital_loss: int = 0
+    hours_per_week: int = 40
+    native_country: str = "United-States"
 
 
 # Instantiate the app.
@@ -33,6 +35,8 @@ async def say_hello():
     return {"greeting": "Hello World!"}
 
 @app.post('/predict')
-async def basic_predict(a: Census):
+async def basic_predict(data: Census):
     # Getting the JSON from the body of the request
-    return a
+    data_json = jsonable_encoder(data)
+    df = pd.DataFrame(data=data_json.values(), index=data_json.keys()).T
+    return df
