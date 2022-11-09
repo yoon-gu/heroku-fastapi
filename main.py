@@ -4,11 +4,21 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional, List
 
-class User(BaseModel):
-    id: int
-    name = 'John Doe'
-    signup_ts: Optional[datetime] = None
-    friends: List[int] = []
+class Census(BaseModel):
+    age: int
+    workclass: str
+    fnlgt: str
+    education: str
+    education_num: int
+    marital_status: str
+    occupation: str
+    relationship: str
+    race: str
+    sex: str
+    capital_gain: int
+    capital_loss: int
+    hours_per_week: int
+    native_country: str
 
 
 # Instantiate the app.
@@ -23,6 +33,6 @@ async def say_hello():
     return {"greeting": "Hello World!"}
 
 @app.post('/predict')
-async def basic_predict(a: int, b: int, c: str):
+async def basic_predict(a: Census):
     # Getting the JSON from the body of the request
-    return str(rf_model)
+    return a
