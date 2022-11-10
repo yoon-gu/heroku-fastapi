@@ -39,8 +39,8 @@ X_test, y_test, _, _ = process_data(
 model = train_model(X_train, y_train)
 
 joblib.dump(model, '../model/rf.joblib')
-joblib.dump(model, '../model/encoder.joblib')
-joblib.dump(model, '../model/lb.joblib')
+joblib.dump(encoder, '../model/encoder.joblib')
+joblib.dump(lb, '../model/lb.joblib')
 
 preds = inference(model, X_test)
 precision, recall, fbeta = compute_model_metrics(y_test, preds)
