@@ -31,7 +31,7 @@ The UCI Machine Learning Repository provides Census Income Dataset. You can see 
 
 ## Evaluation Data
 
-80% of data is used for evaluation with random sampling.
+20% of data is used for evaluation with random sampling.
 
 ## Metrics
 The model's evaulation results:
