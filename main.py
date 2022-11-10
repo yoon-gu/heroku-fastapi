@@ -15,7 +15,7 @@ class Census(BaseModel):
     workclass: str
     fnlgt: int
     education: str
-    education_num: int
+    education_num: int  = Field(alias='education-num')
     marital_status: str = Field(alias='marital-status')
     occupation: str
     relationship: str
