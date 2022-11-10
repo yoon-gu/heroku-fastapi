@@ -13,6 +13,7 @@ def test_data():
     """
     DataFrame from census.csv file after
     """
+    print(os.getcwd())
     dataframe = pd.read_csv("data/census.csv")
     assert True
 
