@@ -72,5 +72,5 @@ async def basic_predict(data: Census):
         training=False)
 
     preds = inference(model, X)
-    prediction = {"prediction": lb.inverse_transform(preds)[0]}
+    prediction = {"prediction": lb.inverse_transform(preds)[0], 'WD': os.getcwd()}
     return prediction
